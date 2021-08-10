@@ -23,7 +23,7 @@ SELECT * FROM Habilidade;
 GO
 
 -- Realizar a contagem de quantas habilidades estão cadastradas
-SELECT COUNT (nomeHabilidade)
+SELECT COUNT (nomeHabilidade) AS [Habilidades Cadastradas]
 FROM Habilidade; 
 GO
 
