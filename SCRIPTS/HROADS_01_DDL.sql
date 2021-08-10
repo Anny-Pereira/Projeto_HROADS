@@ -1,3 +1,4 @@
+-- Criar o banco de dados chamado SENAI_HROADS_MANHA
 CREATE DATABASE SENAI_HROADS_MANHA;
 GO
 
@@ -23,14 +24,14 @@ nomeTipo VARCHAR(12) NOT NULL
 );
 GO
 
+
 CREATE TABLE Classe_Habilidade (
 id INT PRIMARY KEY IDENTITY (1,1),
 idHabilidade INT FOREIGN KEY REFERENCES Habilidade(idHabilidade),
 idClasse INT FOREIGN KEY REFERENCES  Classe(idClasse),
-nomeClasse VARCHAR(25) NOT NULL,
-nomeHabilidade VARCHAR(25) NOT NULL
 );
 GO
+
 
 CREATE TABLE Personagem (
 idPersonagem INT PRIMARY KEY IDENTITY(1,1),
