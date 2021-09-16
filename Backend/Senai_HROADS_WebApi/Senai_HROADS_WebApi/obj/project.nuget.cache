@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bBPHGO90C6AB0QQgbHn9ei6LUB++/bRK/BV3YFVviylaGqQVno/CtKY35+mPH2Fm6wbJ4v3GoGqgLvqZmrQK9g==",
+  "dgSpecHash": "bE2FBnzMmNihCgajL/H+nWt3rEwCUvt2OkMc3uPFxOs9kbsWywNJbCN56f6cxrrGXQ5wZ2TqOpGQI+2bO9I0dA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\elilt\\OneDrive\\Documentos\\SENAI\\2DM_Projeto_HROADS\\Backend\\Nova pasta\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi.csproj",
+  "projectFilePath": "C:\\Users\\elilt\\OneDrive\\Documentos\\SENAI\\2DM_Projeto_HROADS\\Backend\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\elilt\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\elilt\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.10\\microsoft.aspnetcore.authentication.jwtbearer.5.0.10.nupkg.sha512",
