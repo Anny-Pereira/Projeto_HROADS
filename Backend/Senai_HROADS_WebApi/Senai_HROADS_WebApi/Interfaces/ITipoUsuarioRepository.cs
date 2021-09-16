@@ -28,23 +28,23 @@ namespace Senai_HROADS_WebApi.Interfaces
         /// <summary>
         /// Deleta um TipoUsuario
         /// </summary>
-        /// <param name="idUsuario">id do TipoUsuario que será deletado</param>
-        void Deletar(int idTipoUsuario);
+        /// <param name="IdTipoUsuario">id do TipoUsuario que será deletado</param>
+        void Deletar(int IdTipoUsuario);
 
 
         /// <summary>
         /// Busca um TipoUsuario pelo seu id
         /// </summary>
-        /// <param name="idUsuario">id do TipoUsuario que será buscado</param>
+        /// <param name="IdTipoUsuario">id do TipoUsuario que será buscado</param>
         /// <returns></returns>
-        Usuario BuscarId(int idTipoUsuario);
+        TipoUsuario BuscarId(int IdTipoUsuario);
 
         /// <summary>
         /// Atualiza os dados de um TipoUsuario existente
         /// </summary>
-        /// <param name="idTipoUsuario">id do TipoUsuario que será atualizado</param>
+        /// <param name="IdTipoUsuario">id do TipoUsuario que será atualizado</param>
         /// <param name="tipoUsuarioAtualizado">objeto TipoUsuarioAtualizado com as novas informações</param>
-        void Atualizar(int idTipoUsuario, TipoUsuario tipoUsuarioAtualizado);
+        void Atualizar(int IdTipoUsuario, TipoUsuario tipoUsuarioAtualizado);
 
     }
 }
