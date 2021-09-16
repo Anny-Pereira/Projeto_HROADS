@@ -49,3 +49,15 @@ SET nomePersonagem = 'Fer7'
 WHERE nomePersonagem = 'Fer8';
 GO
 
+
+
+
+--API
+INSERT INTO TipoUsuario (titulo)
+VALUES ('Administrador'), ('Jogador');
+GO
+
+INSERT INTO Usuarios (idTipoUsuario, email, senha)
+VALUES (1, 'adm@adm', 'administrador'), (2, 'jog@jog', 'jogador');
+GO
+

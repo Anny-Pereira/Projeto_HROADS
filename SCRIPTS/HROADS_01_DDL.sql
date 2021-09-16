@@ -44,3 +44,26 @@ dataAtualizacao DATE NOT NULL
 );
 GO
 
+
+--API
+CREATE TABLE TipoUsuario(
+idTipoUsuario INT PRIMARY KEY IDENTITY(1,1),
+titulo VARCHAR (30) NOT NULL
+);
+GO
+
+
+
+
+CREATE TABLE Usuarios(
+idUsuario INT PRIMARY KEY IDENTITY(1,1),
+idTipoUsuario INT FOREIGN KEY REFERENCES TipoUsuario(idTipoUsuario),
+email VARCHAR(50) NOT NULL UNIQUE,
+senha VARCHAR(50) NOT NULL
+); 
+GO
+
+
+ALTER TABLE Classe_Habilidade
+DROP COLUMN nomeClasse, nomeHabilidade;
+GO

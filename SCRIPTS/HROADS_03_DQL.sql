@@ -1,6 +1,12 @@
 USE SENAI_HROADS_MANHA;
 GO
 
+SELECT * FROM Usuarios;
+GO
+
+SELECT * FROM TipoUsuario;
+GO
+
 SELECT * FROM Classe_Habilidade;
 GO
 
