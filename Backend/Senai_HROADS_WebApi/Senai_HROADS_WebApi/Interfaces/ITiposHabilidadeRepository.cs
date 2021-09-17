@@ -12,7 +12,7 @@ namespace Senai_HROADS_WebApi.Interfaces
     interface ITiposHabilidadeRepository
     {
         /// <summary>
-        /// Lista todos os TiposHabilidadeRepository
+        /// Lista todos os TiposHabilidade
         /// </summary>
         /// <returns></returns>
         List<TiposHabilidade> ListarTodos();
@@ -26,23 +26,23 @@ namespace Senai_HROADS_WebApi.Interfaces
         /// <summary>
         /// Deleta um Tipo de Habilidade
         /// </summary>
-        /// <param name="IdTipos"> id do Tipo Habilidade que será deletado</param>
-        void Deletar(int IdTipos);
+        /// <param name="idTipos"> id do Tipo Habilidade que será deletado</param>
+        void Deletar(int idTipos);
 
 
         /// <summary>
         /// Busca um idTipos pelo seu id
         /// </summary>
-        /// <param name="IdTipos">id do idTipos que será buscado</param>
+        /// <param name="idTipos">id do idTipos que será buscado</param>
         /// <returns></returns>
-        Usuario BuscarId(int IdTipos);
+        Usuario BuscarId(int idTipos);
 
         /// <summary>
         /// Atualiza os dados de um idTipos existente
         /// </summary>
-        /// <param name="IdTipos">id do TipoHabilidade que será atualizado</param>
-        /// <param name="tiposHabilidadeAtualizado">objeto idTiposAtualizado com as novas informações</param>
-        void Atualizar(int IdTipos, TiposHabilidade IdTiposAtualizado);
+        /// <param name="idTipos">id do TipoHabilidade que será atualizado</param>
+        /// <param name="TiposHabilidadeAtualizado">objeto idTiposAtualizado com as novas informações</param>
+        void Atualizar(int idTipos, TiposHabilidade TiposHabilidadeAtualizado);
 
     }
 }

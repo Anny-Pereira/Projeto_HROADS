@@ -12,7 +12,7 @@ namespace Senai_HROADS_WebApi.Interfaces
     interface IHabilidadeRepository
     {
         /// <summary>
-        /// Lista todos os Habilidade
+        /// Lista todas as Habilidades
         /// </summary>
         /// <returns></returns>
         List<Habilidade> ListarTodos();
@@ -20,28 +20,28 @@ namespace Senai_HROADS_WebApi.Interfaces
         /// <summary>
         /// Cadastra uma nova Habilidade
         /// </summary>
-        /// <param name="Habilidade"></param>
-        void Cadastrar(Habilidade habilidade);
+        /// <param name="novaHabilidade"></param>
+        void Cadastrar(Habilidade novaHabilidade);
 
         /// <summary>
         /// Deleta uma Habilidade
         /// </summary>
-        /// <param name="Habilidade"> id da Habilidade que será deletado</param>
-        void Deletar(int IdHabilidade);
+        /// <param name="idHabilidade"> id da Habilidade que será deletado</param>
+        void Deletar(int idHabilidade);
 
 
         /// <summary>
         /// Busca uma Habilidade pelo seu id
         /// </summary>
-        /// <param name="IdHabilidade">id do idHabilidade que será buscado</param>
+        /// <param name="idHabilidade">id do idHabilidade que será buscado</param>
         /// <returns></returns>
-        Usuario BuscarId(int IdHabilidade);
+        Usuario BuscarId(int idHabilidade);
 
         /// <summary>
         /// Atualiza os dados de um idHabilidade existente
         /// </summary>
-        /// <param name="IdHabilidade">id do Habilidade e que será atualizado</param>
-        /// <param name="Habilidade">objeto idHabilidadeAtualizado com as novas informações</param>
-        void Atualizar(int IdHabilidade, Habilidade IdHabilidadeAtualizado);
+        /// <param name="idHabilidade">id do Habilidade e que será atualizado</param>
+        /// <param name="HabilidadeAtualizado">objeto idHabilidadeAtualizado com as novas informações</param>
+        void Atualizar(int idHabilidade, Habilidade HabilidadeAtualizado);
     }
 }

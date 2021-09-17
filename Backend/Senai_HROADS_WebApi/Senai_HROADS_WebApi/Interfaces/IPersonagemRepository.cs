@@ -12,7 +12,7 @@ namespace Senai_HROADS_WebApi.Interfaces
     interface IPersonagemRepository
     {
         /// <summary>
-        /// Lista todos os PersonagemRepository
+        /// Lista todos os Personagens
         /// </summary>
         /// <returns></returns>
         List<Personagem> ListarTodos();

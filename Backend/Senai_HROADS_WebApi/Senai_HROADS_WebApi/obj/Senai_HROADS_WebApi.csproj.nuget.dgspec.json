@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Senai\\2021-2S-2M\\2S-Projetos\\Projeto_HROADS\\Backend\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi.csproj": {}
+    "C:\\Users\\elilt\\OneDrive\\Documentos\\SENAI\\2DM_Projeto_HROADS\\Backend\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi.csproj": {}
   },
   "projects": {
-    "D:\\Senai\\2021-2S-2M\\2S-Projetos\\Projeto_HROADS\\Backend\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi.csproj": {
+    "C:\\Users\\elilt\\OneDrive\\Documentos\\SENAI\\2DM_Projeto_HROADS\\Backend\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Senai\\2021-2S-2M\\2S-Projetos\\Projeto_HROADS\\Backend\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\elilt\\OneDrive\\Documentos\\SENAI\\2DM_Projeto_HROADS\\Backend\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi.csproj",
         "projectName": "Senai_HROADS_WebApi",
-        "projectPath": "D:\\Senai\\2021-2S-2M\\2S-Projetos\\Projeto_HROADS\\Backend\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi.csproj",
-        "packagesPath": "C:\\Users\\Gustavo Rezende\\.nuget\\packages\\",
-        "outputPath": "D:\\Senai\\2021-2S-2M\\2S-Projetos\\Projeto_HROADS\\Backend\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi\\obj\\",
+        "projectPath": "C:\\Users\\elilt\\OneDrive\\Documentos\\SENAI\\2DM_Projeto_HROADS\\Backend\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi.csproj",
+        "packagesPath": "C:\\Users\\elilt\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\elilt\\OneDrive\\Documentos\\SENAI\\2DM_Projeto_HROADS\\Backend\\Senai_HROADS_WebApi\\Senai_HROADS_WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Gustavo Rezende\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\elilt\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
