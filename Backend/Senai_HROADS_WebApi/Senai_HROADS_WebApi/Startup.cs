@@ -39,26 +39,6 @@ namespace Senai_HROADS_WebApi
                 c.IncludeXmlComments(xmlPath);
             });
 
-            services
-           .AddAuthentication(options =>
-           {
-               options.DefaultAuthenticateScheme = "JwtBearer";
-               options.DefaultChallengeScheme = "JwtBearer";
-           })
-
-           .AddJwtBearer("JwtBearer", options =>
-           {
-               options.TokenValidationParameters = new TokenValidationParameters
-               {
-                   ValidateIssuer = true,
-                   ValidateAudience = true,
-                   ValidateLifetime = true,
-                   IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("Autenticacao_ChaveInLock")),
-                   ClockSkew = TimeSpan.FromMinutes(30),
-                   ValidIssuer = "Inlock.webAPI",
-                   ValidAudience = "Inlock.webAPI"
-               };
-           });
         }
 
 
@@ -85,9 +65,7 @@ namespace Senai_HROADS_WebApi
                 c.RoutePrefix = string.Empty;
             });
 
-            app.UseAuthentication();
-
-            app.UseAuthorization();
+          
 
             app.UseEndpoints(endpoints =>
             {
