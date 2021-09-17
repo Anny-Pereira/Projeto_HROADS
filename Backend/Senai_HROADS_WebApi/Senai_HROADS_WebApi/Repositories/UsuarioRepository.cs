@@ -72,5 +72,11 @@ namespace Senai_HROADS_WebApi.Repositories
             // Retorna uma lista com todas as informações dos Usuários
             return ctx.Usuarios.ToList();
         }
+
+        public Usuario Login (string email, string senha) 
+        {
+            return ctx.Usuarios.FirstOrDefault(e => e.Email == email && e.Senha == senha);
+        }
+
     }
 }

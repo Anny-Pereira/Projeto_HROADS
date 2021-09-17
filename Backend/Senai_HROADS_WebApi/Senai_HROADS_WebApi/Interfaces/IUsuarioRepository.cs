@@ -42,10 +42,10 @@ namespace Senai_HROADS_WebApi.Interfaces
         /// <summary>
         /// Atualiza os dados de um usuario existente
         /// </summary>
-        /// <param name="idUsuario">id do usuario que será atualizado</param>
+        /// <param name="IdUsuario">id do usuario que será atualizado</param>
         /// <param name="usuarioAtualizado">objeto usuarioAtualizado com as novas informações</param>
         void Atualizar(int IdUsuario, Usuario usuarioAtualizado);
 
-
+        Usuario Login(string email, string senha);
     }
 }

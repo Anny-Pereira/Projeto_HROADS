@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,27 @@ namespace Senai_HROADS_WebApi
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
+
+            services
+           .AddAuthentication(options =>
+           {
+               options.DefaultAuthenticateScheme = "JwtBearer";
+               options.DefaultChallengeScheme = "JwtBearer";
+           })
+
+           .AddJwtBearer("JwtBearer", options =>
+           {
+               options.TokenValidationParameters = new TokenValidationParameters
+               {
+                   ValidateIssuer = true,
+                   ValidateAudience = true,
+                   ValidateLifetime = true,
+                   IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("Autenticacao_ChaveInLock")),
+                   ClockSkew = TimeSpan.FromMinutes(30),
+                   ValidIssuer = "Inlock.webAPI",
+                   ValidAudience = "Inlock.webAPI"
+               };
+           });
         }
 
 
@@ -62,6 +84,10 @@ namespace Senai_HROADS_WebApi
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Hroads.webApi");
                 c.RoutePrefix = string.Empty;
             });
+
+            app.UseAuthentication();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
