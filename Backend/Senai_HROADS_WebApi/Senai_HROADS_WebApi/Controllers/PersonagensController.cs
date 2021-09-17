@@ -85,7 +85,7 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpGet("{id}")]
         public IActionResult BuscarId(int id)
         {
-            return Ok(_personagemRepository.BuscarId(id);
+            return Ok(_personagemRepository.BuscarId(id));
         }
     }
 }
