@@ -32,7 +32,15 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpGet]
         public IActionResult Listar()
         {
-            return Ok(_habilidadeRepository.ListarTodos());
+            try
+            {
+                List<Habilidade> listaHabilidade = _habilidadeRepository.ListarTodos();
+                return Ok(listaHabilidade);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
 
 
@@ -45,15 +53,21 @@ namespace Senai_HROADS_WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         public IActionResult Cadastrar(Habilidade novaHabiliade)
-        {
-            _habilidadeRepository.Cadastrar(novaHabiliade);
-
-            return StatusCode(201);
+        {                   
+            try
+            {
+                // Faz a chamada para o método .Cadastrar enviando as informações de cadastro
+                _habilidadeRepository.Cadastrar(novaHabiliade);
+                // Retorna um status code 201
+                return StatusCode(201);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
 
-
-
-        //Deletar
+        //  Deletar
         /// <summary>
         /// Deleta uma habilidade existente
         /// </summary>
@@ -61,12 +75,23 @@ namespace Senai_HROADS_WebApi.Controllers
         /// <returns>retorna um status code</returns>
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
-        {
-            _habilidadeRepository.Deletar(id);
-
-            return StatusCode(204);
+        {        
+            // Faz a chamada para o método .Deletar enviando o id da Classe como parâmetro
+            Habilidade habilidadeBuscado = _habilidadeRepository.BuscarId(id);
+            if (habilidadeBuscado != null)
+            {
+                try
+                {
+                    _habilidadeRepository.Deletar(id);
+                    return StatusCode(204);
+                }
+                catch (Exception erro)
+                {
+                    return BadRequest(erro);
+                }
+            }
+            return NotFound("Nenhuma Habilidade foi encontrado!");
         }
-
 
 
         //Atualizar
@@ -79,9 +104,29 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpPut("{id}")]
         public IActionResult Atualizar(int id, Habilidade habilidadeAtualizada)
         {
-            _habilidadeRepository.Atualizar(id, habilidadeAtualizada);
+            Habilidade habilidadeBuscado = _habilidadeRepository.BuscarId(id);
+            if (habilidadeBuscado == null)
+            {
+                return NotFound
+                    (new
+                    {
+                        mensagem = "Habilidade não encontrada!",
+                        erro = true
+                    });
+            }
+            try
+            {
+                // Faz a chamada para o método .Atualizar enviando as novas informações
+                _habilidadeRepository.Atualizar(id, habilidadeAtualizada);
 
-            return StatusCode(204);
+                // Retorna um status code 204
+                return NoContent();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+
+            }
         }
 
 
@@ -94,7 +139,16 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpGet("{id}")]
         public IActionResult BuscarId(int id)
         {
-            return Ok(_habilidadeRepository.BuscarId(id));
+            try
+            {
+                Habilidade habilidadeBuscado = _habilidadeRepository.BuscarId(id);
+                // Retorna uma Habilidade encontrado
+                return Ok(habilidadeBuscado);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
 
     }

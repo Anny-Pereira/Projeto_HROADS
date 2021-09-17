@@ -20,7 +20,7 @@
             </summary>
             <returns>Uma lista de Classes com o status code 200 - Ok</returns>
         </member>
-        <member name="M:Senai_HROADS_WebApi.Controllers.ClassesController.BuscarPorId(System.Int32)">
+        <member name="M:Senai_HROADS_WebApi.Controllers.ClassesController.BuscarId(System.Int32)">
             <summary>
             Busca uma classe através do seu id
             </summary>

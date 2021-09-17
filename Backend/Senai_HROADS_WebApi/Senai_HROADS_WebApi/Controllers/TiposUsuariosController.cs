@@ -38,7 +38,15 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpGet]
         public IActionResult Listar()
         {
-            return Ok(_tipoUsuarioRepository.ListarTodos());
+            try
+            {
+                List<TipoUsuario> listaTipoUsuario = _tipoUsuarioRepository.ListarTodos();
+                return Ok(listaTipoUsuario);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
 
         /// <summary>
@@ -48,9 +56,17 @@ namespace Senai_HROADS_WebApi.Controllers
         /// <returns>Um tipoUsuario encontrado com o status code 200 - Ok</returns>
         [HttpGet("{IdTipoUsuario}")]
         public IActionResult BuscarPorId(int IdTipoUsuario)
-        {
-            // Retorna um tipo de Usuário encontrado
-            return Ok(_tipoUsuarioRepository.BuscarId(IdTipoUsuario));
+        {       
+            try
+            {
+                TipoUsuario tiposUsuarioBuscado = _tipoUsuarioRepository.BuscarId(IdTipoUsuario);
+                // Retorna um tipo Usuario encontrado
+                return Ok(tiposUsuarioBuscado);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
 
         /// <summary>
@@ -61,11 +77,17 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpPost]
         public IActionResult Cadastrar(TipoUsuario novoTipoUsuario)
         {
-            // Faz a chamada para o método .Cadastrar enviando as informações de cadastro
-            _tipoUsuarioRepository.Cadastrar(novoTipoUsuario);
-
-            // Retorna um status code
-            return StatusCode(201);
+            try
+            {
+                // Faz a chamada para o método .Cadastrar enviando as informações de cadastro
+                _tipoUsuarioRepository.Cadastrar(novoTipoUsuario);
+                // Retorna um status code 201
+                return StatusCode(201);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
 
         /// <summary>
@@ -77,11 +99,27 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpPut("{IdTipoUsuario}")]
         public IActionResult Atualizar(int IdTipoUsuario, TipoUsuario tipoUsuarioAtualizado)
         {
-            // Faz a chamada para o método .Atualizar enviando as novas informações
-            _tipoUsuarioRepository.Atualizar(IdTipoUsuario, tipoUsuarioAtualizado);
-
-            // Retorna um status code
-            return StatusCode(204);
+            TipoUsuario tipoUsuarioBuscado = _tipoUsuarioRepository.BuscarId(IdTipoUsuario);
+            if (tipoUsuarioBuscado == null)
+            {
+                return NotFound
+                    (new
+                    {
+                        mensagem = "tipos de Usuários não encontrado!",
+                        erro = true
+                    });
+            }
+            try
+            {
+                // Faz a chamada para o método .Atualizar enviando as novas informações
+                _tipoUsuarioRepository.Atualizar(IdTipoUsuario, tipoUsuarioAtualizado);
+                // Retorna um status code 204
+                return NoContent();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
 
         /// <summary>
@@ -92,11 +130,20 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpDelete("{IdTipoUsuario}")]
         public IActionResult Deletar(int IdTipoUsuario)
         {
-            // Faz a chamada para o método .Deletar enviando o id do tipoUsuario como parâmetro
-            _tipoUsuarioRepository.Deletar(IdTipoUsuario);
-
-            // Retorna um status code
-            return StatusCode(204);
+            TipoUsuario tipoUsuarioBuscado = _tipoUsuarioRepository.BuscarId(IdTipoUsuario);
+            if (tipoUsuarioBuscado != null)
+            {
+                try
+                {
+                    _tipoUsuarioRepository.Deletar(IdTipoUsuario);
+                    return StatusCode(204);
+                }
+                catch (Exception erro)
+                {
+                    return BadRequest(erro);
+                }
+            }
+            return NotFound("Nenhum Tipo Usuário foi encontrado!");
         }
     }
 }
