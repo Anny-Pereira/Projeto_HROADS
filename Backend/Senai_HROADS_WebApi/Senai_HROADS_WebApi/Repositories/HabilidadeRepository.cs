@@ -1,4 +1,5 @@
-﻿using Senai_HROADS_WebApi.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using Senai_HROADS_WebApi.Contexts;
 using Senai_HROADS_WebApi.Domains;
 using Senai_HROADS_WebApi.Interfaces;
 using System;
@@ -17,7 +18,8 @@ namespace Senai_HROADS_WebApi.Repositories
 
             if (HabilidadeAtualizado.NomeHabilidade != null)
             {
-                ///Coloca o id TipoHabilidade???
+                //idTipohabilidade
+                //habilidadeBuscada.i
                 habilidadeBuscada.NomeHabilidade = HabilidadeAtualizado.NomeHabilidade;
 
             }
@@ -30,8 +32,7 @@ namespace Senai_HROADS_WebApi.Repositories
 
         public Habilidade BuscarId(int IdHabilidade)
         {
-            //ERRO
-            return ctx.Habilidades.FirstOrDefault(h => h.IdHabilidade == IdHabilidade);
+           return ctx.Habilidades.FirstOrDefault(h => h.IdHabilidade == IdHabilidade);
         }
 
         public void Cadastrar(Habilidade novaHabilidade)
@@ -52,7 +53,8 @@ namespace Senai_HROADS_WebApi.Repositories
 
         public List<Habilidade> ListarTodos()
         {
-            return ctx.Habilidades.ToList();
+            //IDTIPOHABILIDADE
+            return ctx.Habilidades.Include(h => h.TiposHabilidades).ToList();
         }
     }
 }

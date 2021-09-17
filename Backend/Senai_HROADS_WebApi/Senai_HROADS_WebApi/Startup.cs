@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,7 +22,12 @@ namespace Senai_HROADS_WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddControllers();
+                .AddControllers()
+                 .AddNewtonsoftJson(options =>
+                 {
+                     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                 });
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -38,6 +44,33 @@ namespace Senai_HROADS_WebApi
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = "JwtBearer";
+                options.DefaultChallengeScheme = "JwtBearer";
+            }
+            )
+
+                .AddJwtBearer("JwtBearer", options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+
+                        ValidateAudience = true,
+
+                        ValidateLifetime = true,
+
+                        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("Hroads-chave-autenticacao")),
+
+                        ClockSkew = TimeSpan.FromHours(1),
+
+                        ValidIssuer = "Hroads.WebApi",
+
+                        ValidAudience = "Hroads.WebApi"
+                    };
+                });
 
         }
 
@@ -63,7 +96,13 @@ namespace Senai_HROADS_WebApi
                 c.RoutePrefix = string.Empty;
             });
 
-          
+
+            //Autenticação
+            app.UseAuthentication();
+
+
+            //Autorização
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
