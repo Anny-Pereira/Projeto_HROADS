@@ -34,7 +34,15 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpGet]
         public IActionResult Listar()
         {
-            return Ok(_tiposHabilidadeRepository.ListarTodos());
+            try
+            {
+                List<TiposHabilidade> listaTiposHabilidade = _tiposHabilidadeRepository.ListarTodos();
+                return Ok(listaTiposHabilidade);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
 
 
@@ -46,10 +54,19 @@ namespace Senai_HROADS_WebApi.Controllers
         /// <returns>Um status code 201 - Created</returns>
         [HttpPost]
         public IActionResult Cadastrar(TiposHabilidade novoTipoHabilidade)
-        {
-            _tiposHabilidadeRepository.Cadastrar(novoTipoHabilidade);
+        {       
+            try
+            {
+                // Faz a chamada para o método .Cadastrar enviando as informações de cadastro
+                _tiposHabilidadeRepository.Cadastrar(novoTipoHabilidade);
+                // Retorna um status code 201
+                return StatusCode(201);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
 
-            return StatusCode(201);
         }
 
 
@@ -62,9 +79,20 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpDelete("{Id}")]
         public IActionResult Deletar(int Id)
         {
-            _tiposHabilidadeRepository.Deletar(Id);
-
-            return StatusCode(204);
+            TiposHabilidade tiposHabilidadeBuscado = _tiposHabilidadeRepository.BuscarId(Id);
+            if (tiposHabilidadeBuscado != null)
+            {
+                try
+                {
+                    _tiposHabilidadeRepository.Deletar(Id);
+                    return StatusCode(204);
+                }
+                catch (Exception erro)
+                {
+                    return BadRequest(erro);
+                }
+            }
+            return NotFound("Nenhum Tipo Habilidade foi encontrado!");
         }
 
 
@@ -77,11 +105,17 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpGet("{Id}")]
         public IActionResult BuscarPorId(int Id)
         {
-            // Retorna um Classe Habilidade encontrado
-            return Ok(_tiposHabilidadeRepository.BuscarId(Id));
+            try
+            {
+                TiposHabilidade tiposHabilidadeBuscado = _tiposHabilidadeRepository.BuscarId(Id);
+                // Retorna um tipo Habilidade encontrado
+                return Ok(tiposHabilidadeBuscado);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
-
-
 
         //Atualizar
         /// <summary>
@@ -92,12 +126,28 @@ namespace Senai_HROADS_WebApi.Controllers
         /// <returns>Um status code 204 - No Content</returns>
         [HttpPut("{Id}")]
         public IActionResult Atualizar(int Id,TiposHabilidade tipoHabilidadeAtualizado)
-        {
-            // Faz a chamada para o método .Atualizar enviando as novas informações
-            _tiposHabilidadeRepository.Atualizar(Id, tipoHabilidadeAtualizado);
-
-            // Retorna um status code
-            return StatusCode(204);
+        {     
+           TiposHabilidade tiposHabilidadeBuscado = _tiposHabilidadeRepository.BuscarId(Id);
+            if (tiposHabilidadeBuscado == null)
+            {
+                return NotFound
+                    (new
+                    {
+                        mensagem = "tipos de habilidade não encontrado!",
+                        erro = true
+                    });
+            }
+            try
+            {
+                // Faz a chamada para o método .Atualizar enviando as novas informações
+                _tiposHabilidadeRepository.Atualizar(Id, tipoHabilidadeAtualizado);
+                // Retorna um status code 204
+                return NoContent();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
     }
 }

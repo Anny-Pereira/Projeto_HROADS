@@ -30,9 +30,16 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpGet]
         public IActionResult ListarTodos()
         {
-            return Ok(_personagemRepository.ListarTodos());
+            try
+            {
+                List<Personagem> listaPersonagem = _personagemRepository.ListarTodos();
+                return Ok(listaPersonagem);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
-
 
         //Cadastrar
         /// <summary>
@@ -43,11 +50,18 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpPost]
         public IActionResult Cadastrar(Personagem novoPersonagem)
         {
-            _personagemRepository.Cadastrar(novoPersonagem);
-
-            return StatusCode(201);
+            try
+            {
+                // Faz a chamada para o método .Cadastrar enviando as informações de cadastro
+                _personagemRepository.Cadastrar(novoPersonagem);
+                // Retorna um status code 201
+                return StatusCode(201);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
-
 
         //Deletar
         /// <summary>
@@ -58,11 +72,21 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {
-            _personagemRepository.Deletar(id);
-
-            return StatusCode(204);        
+            Personagem personagemBuscado = _personagemRepository.BuscarId(id);
+            if (personagemBuscado != null)
+            {
+                try
+                {
+                    _personagemRepository.Deletar(id);
+                    return StatusCode(204);
+                }
+                catch (Exception erro)
+                {
+                    return BadRequest(erro);
+                }
+            }
+            return NotFound("Nenhum personagem foi encontrado!");
         }
-
 
         //Atualizar
         /// <summary>
@@ -74,17 +98,44 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpPut("{id}")]
         public IActionResult Atualizar(int id, Personagem personagemAtualizado)
         {
-            _personagemRepository.Atualizar(id, personagemAtualizado);
+            Personagem personagemBuscado = _personagemRepository.BuscarId(id);
+            if (personagemBuscado == null)
+            {
+                return NotFound
+                    (new
+                    {
+                        mensagem = "Personagem não encontrado!",
+                        erro = true
+                    });
+            }
+            try
+            {
+                // Faz a chamada para o método .Atualizar enviando as novas informações
+                _personagemRepository.Atualizar(id, personagemAtualizado);
+                // Retorna um status code 204
+                return NoContent();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
 
-            return StatusCode(204);
+            }
         }
-
 
         //BuscarId
         [HttpGet("{id}")]
         public IActionResult BuscarId(int id)
         {
-            return Ok(_personagemRepository.BuscarId(id));
+            try
+            {
+               Personagem personagemBuscado = _personagemRepository.BuscarId(id);
+                // Retorna um Personagem encontrado
+                return Ok(personagemBuscado);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
     }
 }

@@ -37,7 +37,15 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpGet]
         public IActionResult Listar()
         {
-            return Ok(_usuarioRepository.ListarTodos());
+            try
+            {
+                List<Usuario> listaUsuario = _usuarioRepository.ListarTodos();
+                return Ok(listaUsuario);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
 
         /// <summary>
@@ -48,8 +56,16 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpGet("{IdUsuario}")]
         public IActionResult BuscarPorId(int IdUsuario)
         {
-            // Retorna um estúdio encontrado
-            return Ok(_usuarioRepository.BuscarId(IdUsuario));
+            try
+            {
+                Usuario usuarioBuscado = _usuarioRepository.BuscarId(IdUsuario);
+                // Retorna um Usuario encontrado
+                return Ok(usuarioBuscado);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
 
         /// <summary>
@@ -60,11 +76,17 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpPost]
         public IActionResult Cadastrar(Usuario novoUsuario)
         {
-            // Faz a chamada para o método .Cadastrar enviando as informações de cadastro
-            _usuarioRepository.Cadastrar(novoUsuario);
-
-            // Retorna um status code
-            return StatusCode(201);
+            try
+            {
+                // Faz a chamada para o método .Cadastrar enviando as informações de cadastro
+                _usuarioRepository.Cadastrar(novoUsuario);
+                // Retorna um status code 201
+                return StatusCode(201);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
 
         /// <summary>
@@ -76,11 +98,27 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpPut("{IdUsuario}")]
         public IActionResult Atualizar(int IdUsuario, Usuario usuarioAtualizado)
         {
-            // Faz a chamada para o método .Atualizar enviando as novas informações
-            _usuarioRepository.Atualizar(IdUsuario, usuarioAtualizado);
-
-            // Retorna um status code
-            return StatusCode(204);
+            Usuario usuarioBuscado = _usuarioRepository.BuscarId(IdUsuario);
+            if (usuarioBuscado == null)
+            {
+                return NotFound
+                    (new
+                    {
+                        mensagem = "Usuários não encontrado!",
+                        erro = true
+                    });
+            }
+            try
+            {
+                // Faz a chamada para o método .Atualizar enviando as novas informações
+                _usuarioRepository.Atualizar(IdUsuario, usuarioAtualizado);
+                // Retorna um status code 204
+                return NoContent();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
 
         /// <summary>
@@ -91,11 +129,20 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpDelete("{IdUsuario}")]
         public IActionResult Deletar(int IdUsuario)
         {
-            // Faz a chamada para o método .Deletar enviando o id do usuário como parâmetro
-            _usuarioRepository.Deletar(IdUsuario);
-
-            // Retorna um status code
-            return StatusCode(204);
+            Usuario usuarioBuscado = _usuarioRepository.BuscarId(IdUsuario);
+            if (usuarioBuscado != null)
+            {
+                try
+                {
+                    _usuarioRepository.Deletar(IdUsuario);
+                    return StatusCode(204);
+                }
+                catch (Exception erro)
+                {
+                    return BadRequest(erro);
+                }
+            }
+            return NotFound("Nenhum Usuário foi encontrado!");
         }
     }
 }

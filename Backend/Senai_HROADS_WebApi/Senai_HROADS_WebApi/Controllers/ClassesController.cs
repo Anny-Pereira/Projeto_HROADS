@@ -34,8 +34,17 @@ namespace Senai_HROADS_WebApi.Controllers
         /// <returns>Uma lista de Classes com o status code 200 - Ok</returns>
         [HttpGet]
         public IActionResult Listar()
-        {
-            return Ok(_classeRepository.ListarTodos());
+        {      
+            try
+            {
+                List<Classe> listaClasse = _classeRepository.ListarTodos();
+                return Ok(listaClasse);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
+
         }
 
         /// <summary>
@@ -44,10 +53,19 @@ namespace Senai_HROADS_WebApi.Controllers
         /// <param name="IdClasse">ID da Classe que será buscado</param>
         /// <returns>Uma classe encontrado com o status code 200 - Ok</returns>
         [HttpGet("{IdClasse}")]
-        public IActionResult BuscarPorId(int IdClasse)
+        public IActionResult BuscarId(int IdClasse)
         {
             // Retorna uma Classe encontrada
-            return Ok(_classeRepository.BuscarId(IdClasse));
+            try
+            {
+                Classe classeBuscado = _classeRepository.BuscarId(IdClasse);
+                return Ok(classeBuscado);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
+
         }
 
         /// <summary>
@@ -59,10 +77,17 @@ namespace Senai_HROADS_WebApi.Controllers
         public IActionResult Cadastrar(Classe novoClasse)
         {
             // Faz a chamada para o método .Cadastrar enviando as informações de cadastro
-            _classeRepository.Cadastrar(novoClasse);
+            try
+            {
+                _classeRepository.Cadastrar(novoClasse);
+                // Retorna um status code 201
+                return StatusCode(201);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
 
-            // Retorna um status code
-            return StatusCode(201);
         }
 
         /// <summary>
@@ -74,11 +99,33 @@ namespace Senai_HROADS_WebApi.Controllers
         [HttpPut("{IdClasse}")]
         public IActionResult Atualizar(int IdClasse, Classe classeAtualizado)
         {
-            // Faz a chamada para o método .Atualizar enviando as novas informações
-            _classeRepository.Atualizar(IdClasse, classeAtualizado);
 
-            // Retorna um status code
-            return StatusCode(204);
+            Classe classeBuscado = _classeRepository.BuscarId(IdClasse);
+
+
+            if (classeBuscado == null)
+            {
+                return NotFound
+                    (new
+                    {
+                        mensagem = "Classe não encontrada!",
+                        erro = true
+                    }); 
+            }
+            try
+            {
+                // Faz a chamada para o método .Atualizar enviando as novas informações
+                _classeRepository.Atualizar(IdClasse, classeAtualizado);
+
+                // Retorna um status code 204
+                return NoContent();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+              
+            }
+  
         }
 
         /// <summary>
@@ -90,10 +137,22 @@ namespace Senai_HROADS_WebApi.Controllers
         public IActionResult Deletar(int IdClasse)
         {
             // Faz a chamada para o método .Deletar enviando o id da Classe como parâmetro
-            _classeRepository.Deletar(IdClasse);
+            Classe classeBuscado = _classeRepository.BuscarId(IdClasse);
 
-            // Retorna um status code
-            return StatusCode(204);
+            if (classeBuscado != null)
+            {
+                try
+                {
+                    _classeRepository.Deletar(IdClasse);
+                    return StatusCode(204);
+                }
+                catch (Exception erro)
+                {
+                    return BadRequest(erro);
+                }
+            }
+
+            return NotFound("Nenhuma classe foi encontrado!");
         }
     }
 }

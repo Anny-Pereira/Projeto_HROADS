@@ -21,6 +21,7 @@ namespace Senai_HROADS_WebApi.Controllers
         private IUsuarioRepository _UsuarioRepository { get; set; }
 
 
+<<<<<<< HEAD
         /// <summary>
         /// Autentica um usuário
         /// </summary>
@@ -70,4 +71,9 @@ namespace Senai_HROADS_WebApi.Controllers
         }
 
     }
+=======
+          
+      //  }
+    //}
+>>>>>>> fced03cf582c27fdb6e9b2c7cd1c5a2c932f43e4
 }
