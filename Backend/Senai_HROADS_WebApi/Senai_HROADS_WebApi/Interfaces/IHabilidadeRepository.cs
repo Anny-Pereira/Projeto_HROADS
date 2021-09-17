@@ -35,7 +35,7 @@ namespace Senai_HROADS_WebApi.Interfaces
         /// </summary>
         /// <param name="idHabilidade">id do idHabilidade que será buscado</param>
         /// <returns></returns>
-        Usuario BuscarId(int idHabilidade);
+        Habilidade BuscarId(int idHabilidade);
 
         /// <summary>
         /// Atualiza os dados de um idHabilidade existente

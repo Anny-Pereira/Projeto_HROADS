@@ -10,7 +10,7 @@ namespace Senai_HROADS_WebApi.Repositories
 {
     public class ClasseRepository : IClasseRepository
     {
-        InLockContext ctx = new InLockContext();
+        HroadsContext ctx = new HroadsContext();
 
         public void Atualizar(int IdClasse, Classe classeAtualizado)
         {

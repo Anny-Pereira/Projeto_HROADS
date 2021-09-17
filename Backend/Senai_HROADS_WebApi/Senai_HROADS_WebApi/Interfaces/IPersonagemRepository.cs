@@ -20,13 +20,13 @@ namespace Senai_HROADS_WebApi.Interfaces
         /// <summary>
         /// Cadastra um novo Personagem
         /// </summary>
-        /// <param name="Personagem"></param>
+        /// <param name="personagem"></param>
         void Cadastrar(Personagem personagem);
 
         /// <summary>
         /// Deleta um Personagem
         /// </summary>
-        /// <param name="Personagem"> id do Personagem que será deletado</param>
+        /// <param name="IdPersonagem"> id do Personagem que será deletado</param>
         void Deletar(int IdPersonagem);
 
 
@@ -35,13 +35,13 @@ namespace Senai_HROADS_WebApi.Interfaces
         /// </summary>
         /// <param name="IdPersonagem">id do idPersonagem que será buscado</param>
         /// <returns></returns>
-        Usuario BuscarId(int IdPersonagem);
+        Personagem BuscarId(int IdPersonagem);
 
         /// <summary>
         /// Atualiza os dados de um idPersonagem existente
         /// </summary>
         /// <param name="IdPersonagem">id do Personagem e que será atualizado</param>
-        /// <param name="Personagem">objeto idPersonagemAtualizado com as novas informações</param>
+        /// <param name="IdPersonagemAtualizado">objeto idPersonagemAtualizado com as novas informações</param>
         void Atualizar(int IdPersonagem, Personagem IdPersonagemAtualizado);
     }
 }

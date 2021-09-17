@@ -35,7 +35,7 @@ namespace Senai_HROADS_WebApi.Interfaces
         /// </summary>
         /// <param name="idTipos">id do idTipos que será buscado</param>
         /// <returns></returns>
-        Usuario BuscarId(int idTipos);
+        TiposHabilidade BuscarId(int idTipos);
 
         /// <summary>
         /// Atualiza os dados de um idTipos existente

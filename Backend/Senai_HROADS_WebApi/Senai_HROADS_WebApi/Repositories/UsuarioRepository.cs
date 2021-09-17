@@ -14,7 +14,7 @@ namespace Senai_HROADS_WebApi.Repositories
         /// <summary>
         /// Objeto contexto por onde serão chamados os métodos do EF Core
         /// </summary>
-        InLockContext ctx = new InLockContext();
+        HroadsContext ctx = new HroadsContext();
 
 
         public void Atualizar(int IdUsuario, Usuario usuarioAtualizado)

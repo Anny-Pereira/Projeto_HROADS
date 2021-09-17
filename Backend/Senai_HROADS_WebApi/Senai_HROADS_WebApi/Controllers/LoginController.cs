@@ -12,20 +12,20 @@ using System.Threading.Tasks;
 
 namespace Senai_HROADS_WebApi.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/[controller]")]
-    [ApiController]
-    public class LoginController : ControllerBase
-    {
-        private IUsuarioRepository _UsuarioRepository { get; set; }
+    //[Produces("application/json")]
+   // [Route("api/[controller]")]
+   // [ApiController]
+  //  public class LoginController : ControllerBase
+   // {
+    //    private IUsuarioRepository _UsuarioRepository { get; set; }
 
 
-        [HttpPost("Login")]
-        public IActionResult Login(Usuario login)
-        {
-            Usuario usuarioBuscado = _UsuarioRepository.Login(login.Email, login.Senha);
+     //   [HttpPost("Login")]
+       // public IActionResult Login(Usuario login)
+       // {
+         //   Usuario usuarioBuscado = _UsuarioRepository.Login(login.Email, login.Senha);
 
           
-        }
+      //  }
     }
-}
+//}

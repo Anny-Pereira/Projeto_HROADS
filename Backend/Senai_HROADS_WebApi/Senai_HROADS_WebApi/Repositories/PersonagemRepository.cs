@@ -10,7 +10,7 @@ namespace Senai_HROADS_WebApi.Repositories
 {
     public class PersonagemRepository : IPersonagemRepository
     {
-        InLockContext ctx = new InLockContext();
+        HroadsContext ctx = new HroadsContext();
 
         public void Atualizar(int IdPersonagem, Personagem PersonagemAtualizado)
         {
@@ -18,10 +18,16 @@ namespace Senai_HROADS_WebApi.Repositories
 
             if (PersonagemAtualizado != null)
             {
-                ///Coloca o id TipoHabilidade???
+                ///Coloca o id TipoHabilidade
+                
+                personagemBuscado.IdClasse = PersonagemAtualizado.IdClasse;
                 personagemBuscado.NomePersonagem = PersonagemAtualizado.NomePersonagem;
+                personagemBuscado.CapacidadeMaxVida = PersonagemAtualizado.CapacidadeMaxVida;
+                personagemBuscado.CapacidadeMaxMana = PersonagemAtualizado.CapacidadeMaxMana;
+                personagemBuscado.DataCriacao = PersonagemAtualizado.DataCriacao;
+                personagemBuscado.DataAtualizacao = PersonagemAtualizado.DataAtualizacao;
 
-            }
+    }
 
             ctx.Personagems.Update(personagemBuscado);
 
@@ -29,7 +35,7 @@ namespace Senai_HROADS_WebApi.Repositories
 
         }
 
-        public Usuario BuscarId(int IdPersonagem)
+        public Personagem BuscarId(int IdPersonagem)
         {
             return ctx.Personagems.FirstOrDefault(p => p.IdPersonagem == IdPersonagem);
         }
@@ -43,16 +49,21 @@ namespace Senai_HROADS_WebApi.Repositories
 
         public void Deletar(int IdPersonagem)
         {
-            Habilidade habiliddeBuscada = BuscarId(IdPersonagem);
+            Personagem personagemBuscada = BuscarId(IdPersonagem);
 
-            ctx.Remove(habiliddeBuscada);
+            ctx.Remove(personagemBuscada);
 
             ctx.SaveChanges();
         }
 
         public List<Personagem> ListarTodos()
         {
-            return ctx.Habilidades.ToList();
+            return ctx.Personagems.ToList();
+        }
+
+        Personagem IPersonagemRepository.BuscarId(int IdPersonagem)
+        {
+            return ctx.Personagems.FirstOrDefault(p => p.IdPersonagem == IdPersonagem);
         }
     }
 }

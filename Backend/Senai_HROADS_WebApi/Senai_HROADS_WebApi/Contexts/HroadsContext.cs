@@ -7,13 +7,13 @@ using Senai_HROADS_WebApi.Domains;
 
 namespace Senai_HROADS_WebApi.Contexts
 {
-    public partial class InLockContext : DbContext
+    public partial class HroadsContext : DbContext
     {
-        public InLockContext()
+        public HroadsContext()
         {
         }
 
-        public InLockContext(DbContextOptions<InLockContext> options)
+        public HroadsContext(DbContextOptions<HroadsContext> options)
             : base(options)
         {
         }
@@ -33,10 +33,10 @@ namespace Senai_HROADS_WebApi.Contexts
                 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
 
                 // Conexão da Anny
-                 optionsBuilder.UseSqlServer("Data Source= DESKTOP-TUQ4VJR\\SQLEXPRESS; initial catalog=SENAI_HROADS_MANHA; user Id=sa; pwd=senai@132;");
+                // optionsBuilder.UseSqlServer("Data Source= DESKTOP-TUQ4VJR\\SQLEXPRESS; initial catalog=SENAI_HROADS_MANHA; user Id=sa; pwd=senai@132;");
 
                 //Conexão do Rezende
-                //optionsBuilder.UseSqlServer("Data Source=DESKTOP-5BM5L8P\\SQLEXPRESS; initial catalog=SENAI_HROADS_MANHA; user Id=sa; pwd=Senai@132;");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-5BM5L8P\\SQLEXPRESS; initial catalog=SENAI_HROADS_MANHA; user Id=sa; pwd=Senai@132;");
             }
         }
 

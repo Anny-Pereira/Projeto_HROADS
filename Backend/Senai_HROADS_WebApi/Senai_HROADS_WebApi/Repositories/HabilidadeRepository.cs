@@ -10,7 +10,7 @@ namespace Senai_HROADS_WebApi.Repositories
 {
     public class HabilidadeRepository : IHabilidadeRepository
     {
-        InLockContext ctx = new InLockContext();
+        HroadsContext ctx = new HroadsContext();
         public void Atualizar(int idHabilidade, Habilidade HabilidadeAtualizado)
         {
             Habilidade habilidadeBuscada = ctx.Habilidades.Find(idHabilidade);
@@ -19,6 +19,7 @@ namespace Senai_HROADS_WebApi.Repositories
             {
                 ///Coloca o id TipoHabilidade???
                 habilidadeBuscada.NomeHabilidade = HabilidadeAtualizado.NomeHabilidade;
+
             }
 
             ctx.Habilidades.Update(habilidadeBuscada);
@@ -27,10 +28,10 @@ namespace Senai_HROADS_WebApi.Repositories
 
         }
 
-        public Usuario BuscarId(int idHabilidade)
+        public Habilidade BuscarId(int IdHabilidade)
         {
             //ERRO
-            return ctx.Habilidades.FirstOrDefault(h => h.IdHabilidade == idHabilidade);
+            return ctx.Habilidades.FirstOrDefault(h => h.IdHabilidade == IdHabilidade);
         }
 
         public void Cadastrar(Habilidade novaHabilidade)

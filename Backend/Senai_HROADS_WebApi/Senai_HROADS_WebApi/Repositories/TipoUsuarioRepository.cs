@@ -11,7 +11,7 @@ namespace Senai_HROADS_WebApi.Repositories
     public class TipoUsuarioRepository : ITipoUsuarioRepository
     {
 
-        InLockContext ctx = new InLockContext();
+        HroadsContext ctx = new HroadsContext();
         public void Atualizar(int IdTipoUsuario, TipoUsuario tipoUsuarioAtualizado)
         {
             // Busca um TipoUsuario através do seu id

@@ -10,7 +10,7 @@ namespace Senai_HROADS_WebApi.Repositories
 {
     public class ClasseHabilidadeRepository : IClasseHabilidadeRepository
     {
-        InLockContext ctx = new InLockContext();
+        HroadsContext ctx = new HroadsContext();
 
 
         public void Atualizar(int Id, ClasseHabilidade classeHabilidadeAtualizado)
@@ -25,7 +25,8 @@ namespace Senai_HROADS_WebApi.Repositories
             if (classeHabilidadeAtualizado.Id.ToString() != null)
             {
                 // Se sim, altera o valor da propriedade Id
-                classeHabilidadeBuscado.Id = classeHabilidadeAtualizado.Id;
+                classeHabilidadeBuscado.IdClasse = classeHabilidadeAtualizado.IdClasse;
+                classeHabilidadeBuscado.IdHabilidade = classeHabilidadeAtualizado.IdHabilidade;
             }
 
             // Atualiza a Classe habilidade que foi buscado

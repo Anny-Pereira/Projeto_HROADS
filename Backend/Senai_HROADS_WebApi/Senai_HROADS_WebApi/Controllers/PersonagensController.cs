@@ -22,7 +22,6 @@ namespace Senai_HROADS_WebApi.Controllers
         }
 
 
-
         //ListarTodos
         /// <summary>
         /// Lista todos os personagens

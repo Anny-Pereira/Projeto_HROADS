@@ -11,7 +11,7 @@ namespace Senai_HROADS_WebApi.Repositories
 
     public class TipoHabilidadeRepository : ITiposHabilidadeRepository
     {
-        InLockContext ctx = new InLockContext();
+        HroadsContext ctx = new HroadsContext();
 
         public void Atualizar(int idTipos, TiposHabilidade TiposHabilidadeAtualizado)
         {
@@ -29,7 +29,7 @@ namespace Senai_HROADS_WebApi.Repositories
 
         }
 
-        public Usuario BuscarId(int idTipos)
+        public TiposHabilidade BuscarId(int idTipos)
         {
             //ERRO
             return ctx.TiposHabilidades.FirstOrDefault(th => th.IdTipos == idTipos);
