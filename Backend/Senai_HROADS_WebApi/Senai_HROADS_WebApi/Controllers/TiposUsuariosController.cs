@@ -74,6 +74,7 @@ namespace Senai_HROADS_WebApi.Controllers
         /// </summary>
         /// <param name="novoTipoUsuario">Objeto novoTipoUsuario com as informações</param>
         /// <returns>Um status code 201 - Created</returns>
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(TipoUsuario novoTipoUsuario)
         {

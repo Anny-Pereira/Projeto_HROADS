@@ -1,4 +1,5 @@
-﻿using Senai_HROADS_WebApi.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using Senai_HROADS_WebApi.Contexts;
 using Senai_HROADS_WebApi.Domains;
 using Senai_HROADS_WebApi.Interfaces;
 using System;
@@ -58,7 +59,7 @@ namespace Senai_HROADS_WebApi.Repositories
 
         public List<Personagem> ListarTodos()
         {
-            return ctx.Personagems.ToList();
+            return ctx.Personagems.Include(p => p.IdClasseNavigation).ToList();
         }
 
         Personagem IPersonagemRepository.BuscarId(int IdPersonagem)

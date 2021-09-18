@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Senai_HROADS_WebApi.Domains;
 using Senai_HROADS_WebApi.Interfaces;
@@ -27,6 +28,7 @@ namespace Senai_HROADS_WebApi.Controllers
         /// Lista todos os personagens
         /// </summary>
         /// <returns>uma lista de estudios com status code</returns>
+        [Authorize(Roles = "1,2")]
         [HttpGet]
         public IActionResult ListarTodos()
         {
@@ -47,6 +49,7 @@ namespace Senai_HROADS_WebApi.Controllers
         /// </summary>
         /// <param name="novoPersonagem">objeto personagem com as ionformações</param>
         /// <returns></returns>
+        [Authorize(Roles = "2")]
         [HttpPost]
         public IActionResult Cadastrar(Personagem novoPersonagem)
         {

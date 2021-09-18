@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Senai_HROADS_WebApi.Domains;
 using Senai_HROADS_WebApi.Interfaces;
@@ -31,6 +32,7 @@ namespace Senai_HROADS_WebApi.Controllers
         /// Lista todos os tiposHabilidade
         /// </summary>
         /// <returns>Uma lista de TiposHabilidade com o status code 200 - Ok</returns>
+        /// PÚBLICA
         [HttpGet]
         public IActionResult Listar()
         {
@@ -52,6 +54,7 @@ namespace Senai_HROADS_WebApi.Controllers
         /// </summary>
         /// <param name="novoTipoHabilidade">Objeto novoTipoHabilidade com as informações</param>
         /// <returns>Um status code 201 - Created</returns>
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(TiposHabilidade novoTipoHabilidade)
         {       

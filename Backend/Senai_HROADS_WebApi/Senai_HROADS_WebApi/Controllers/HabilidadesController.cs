@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Senai_HROADS_WebApi.Domains;
 using Senai_HROADS_WebApi.Interfaces;
@@ -29,6 +30,7 @@ namespace Senai_HROADS_WebApi.Controllers
         /// Lista todas as habilidades
         /// </summary>
         /// <returns>uma lista de habilidades e um status code</returns>
+        /// PÚBLICA
         [HttpGet]
         public IActionResult Listar()
         {
@@ -51,6 +53,7 @@ namespace Senai_HROADS_WebApi.Controllers
         /// </summary>
         /// <param name="novaHabiliade">novo objeto que será cadastrado</param>
         /// <returns></returns>
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(Habilidade novaHabiliade)
         {                   

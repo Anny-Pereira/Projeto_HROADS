@@ -129,6 +129,13 @@
             <param name="id">id da habilidade que será buscada</param>
             <returns></returns>
         </member>
+        <member name="M:Senai_HROADS_WebApi.Controllers.LoginController.Login(Senai_HROADS_WebApi.Domains.Usuario)">
+            <summary>
+            Autentica um usuário
+            </summary>
+            <param name = "login" ></param>
+            <returns></returns>
+        </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.PersonagensController.ListarTodos">
             <summary>
             Lista todos os personagens

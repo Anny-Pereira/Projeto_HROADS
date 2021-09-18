@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Senai_HROADS_WebApi.Domains;
 using Senai_HROADS_WebApi.Interfaces;
@@ -73,6 +74,7 @@ namespace Senai_HROADS_WebApi.Controllers
         /// </summary>
         /// <param name="novoClasseHabilidade">Objeto novoClasseHabilidade com as informações</param>
         /// <returns>Um status code 201 - Created</returns>
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(ClasseHabilidade novoClasseHabilidade)
         {
