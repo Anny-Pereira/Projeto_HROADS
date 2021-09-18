@@ -22,12 +22,12 @@ namespace Senai_HROADS_WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddControllers()
-                 .AddNewtonsoftJson(options =>
-                 {
-                     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
-                 });
+      .AddControllers()
+       .AddNewtonsoftJson(options =>
+       {
+           options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+           options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+       });
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -71,9 +71,7 @@ namespace Senai_HROADS_WebApi
                         ValidAudience = "Hroads.WebApi"
                     };
                 });
-
         }
-
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -87,8 +85,6 @@ namespace Senai_HROADS_WebApi
 
             app.UseSwagger();
 
-
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {

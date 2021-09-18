@@ -18,8 +18,7 @@ namespace Senai_HROADS_WebApi.Repositories
 
             if (HabilidadeAtualizado.NomeHabilidade != null)
             {
-                //idTipohabilidade
-                //habilidadeBuscada.i
+                habilidadeBuscada.IdTipos = HabilidadeAtualizado.IdTipos;
                 habilidadeBuscada.NomeHabilidade = HabilidadeAtualizado.NomeHabilidade;
 
             }
@@ -53,8 +52,8 @@ namespace Senai_HROADS_WebApi.Repositories
 
         public List<Habilidade> ListarTodos()
         {
-            //IDTIPOHABILIDADE
-            return ctx.Habilidades.Include(h => h.TiposHabilidades).ToList();
+            //IDTIPOHABILIDADE não aparece o nome??
+            return ctx.Habilidades.Include(h => h.IdTiposNavigation).ToList();
         }
     }
 }

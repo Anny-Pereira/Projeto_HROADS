@@ -1,4 +1,5 @@
-﻿using Senai_HROADS_WebApi.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using Senai_HROADS_WebApi.Contexts;
 using Senai_HROADS_WebApi.Domains;
 using Senai_HROADS_WebApi.Interfaces;
 using System;
@@ -70,7 +71,7 @@ namespace Senai_HROADS_WebApi.Repositories
         public List<Usuario> ListarTodos()
         {
             // Retorna uma lista com todas as informações dos Usuários
-            return ctx.Usuarios.ToList();
+            return ctx.Usuarios.Include(u => u.IdTipoUsuarioNavigation).ToList();
         }
 
         public Usuario Login (string email, string senha) 

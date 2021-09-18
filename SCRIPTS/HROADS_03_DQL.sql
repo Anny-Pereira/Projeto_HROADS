@@ -4,6 +4,12 @@ GO
 SELECT * FROM Usuarios;
 GO
 
+SELECT * FROM Tipos_Habilidade;
+GO
+
+SELECT * FROM Habilidade;
+GO
+
 SELECT * FROM TipoUsuario;
 GO
 
@@ -45,7 +51,7 @@ GO
 -- Selecionar todas as Habilidades e a quais tipos de habilidades elas fazem parte
 SELECT nomeHabilidade AS [Nome Habilidade], nomeTipo AS [Tipo de Habilidade] FROM Habilidade 
 INNER JOIN Tipos_Habilidade 
-ON Habilidade.idHabilidade = Tipos_Habilidade.idHabilidade;
+ON Habilidade.idTipos = Tipos_Habilidade.idTipos;
 GO
 
 -- Selecionar todos os Personagens e suas respectivas classes

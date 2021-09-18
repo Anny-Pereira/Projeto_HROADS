@@ -21,59 +21,54 @@ namespace Senai_HROADS_WebApi.Controllers
         private IUsuarioRepository _UsuarioRepository { get; set; }
 
 
-<<<<<<< HEAD
         /// <summary>
         /// Autentica um usuário
         /// </summary>
         /// <param name="login"></param>
         /// <returns></returns>
-        [HttpPost("Login")]
-        public IActionResult Login(Usuario login)
-        {
-            Usuario usuarioBuscado = _UsuarioRepository.Login(login.Email, login.Senha);
+        //[HttpPost("Login")]
+        //public IActionResult Login(Usuario login)
+        //{
+        //    Usuario usuarioBuscado = _UsuarioRepository.Login(login.Email, login.Senha);
 
-            if (usuarioBuscado != null)
-            {
-                var Claims = new[]
-                {
-                    new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email),
-                    new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario.ToString()),
-                    new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuario.ToString())
-                };
+        //    if (usuarioBuscado != null)
+        //    {
+        //        var Claims = new[]
+        //        {
+        //            new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email),
+        //            new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario.ToString()),
+        //            new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuario.ToString())
+        //        };
 
-                var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("Hroads-chave-autenticacao"));
+        //        var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("Hroads-chave-autenticacao"));
 
-                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        //        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-                var token = new JwtSecurityToken(
-                    issuer:"Hroads.WebApi",
+        //        var token = new JwtSecurityToken(
+        //            issuer:"Hroads.WebApi",
 
-                    audience: "Hroads.WebApi",
+        //            audience: "Hroads.WebApi",
 
-                    claims: Claims,
+        //            claims: Claims,
 
-                    expires: DateTime.Now.AddHours(1),
+        //            expires: DateTime.Now.AddHours(1),
 
-                    signingCredentials: creds
-                    );
-
-
-                return Ok(
-                    new
-                    {
-                        token = new JwtSecurityTokenHandler().WriteToken(token)
-                    }
-                    );
-            }
+        //            signingCredentials: creds
+        //            );
 
 
-            return NotFound("Email ou senha inválidos!");
-        }
+        //        return Ok(
+        //            new
+        //            {
+        //                token = new JwtSecurityTokenHandler().WriteToken(token)
+        //            }
+        //            );
+        //    }
+
+
+        //    return NotFound("Email ou senha inválidos!");
+        //}
 
     }
-=======
-          
-      //  }
-    //}
->>>>>>> fced03cf582c27fdb6e9b2c7cd1c5a2c932f43e4
+
 }
