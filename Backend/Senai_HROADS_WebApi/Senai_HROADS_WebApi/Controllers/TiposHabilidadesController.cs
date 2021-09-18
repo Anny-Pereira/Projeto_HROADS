@@ -79,6 +79,8 @@ namespace Senai_HROADS_WebApi.Controllers
         /// </summary>
         /// <param name="Id">ID do tipo Habilidadee que será deletado</param>
         /// <returns>Um status code 204 - No Content</returns>
+        /// 
+        [Authorize(Roles = "1")]
         [HttpDelete("{Id}")]
         public IActionResult Deletar(int Id)
         {
@@ -105,6 +107,8 @@ namespace Senai_HROADS_WebApi.Controllers
         /// </summary>
         /// <param name="Id">ID do TipoHabilidade que será buscado</param>
         /// <returns>Um TipoHabilidade encontrado com o status code 200 - Ok</returns>
+        /// 
+        [Authorize(Roles = "1")]
         [HttpGet("{Id}")]
         public IActionResult BuscarPorId(int Id)
         {
@@ -127,6 +131,8 @@ namespace Senai_HROADS_WebApi.Controllers
         /// <param name="Id">ID do TipoHabilidade que será atualizado</param>
         /// <param name="tipoHabilidadeAtualizado">Objeto TipoHabilidadeAtualizado com as novas informações</param>
         /// <returns>Um status code 204 - No Content</returns>
+        /// 
+        [Authorize(Roles = "1")]
         [HttpPut("{Id}")]
         public IActionResult Atualizar(int Id,TiposHabilidade tipoHabilidadeAtualizado)
         {     

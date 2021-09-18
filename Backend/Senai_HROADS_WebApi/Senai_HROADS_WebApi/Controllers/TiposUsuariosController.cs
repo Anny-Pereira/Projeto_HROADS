@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Senai_HROADS_WebApi.Domains;
 using Senai_HROADS_WebApi.Interfaces;
@@ -35,6 +36,8 @@ namespace Senai_HROADS_WebApi.Controllers
         /// Lista todos os tiposUsuarios
         /// </summary>
         /// <returns>Uma lista de tiposUsuarios com o status code 200 - Ok</returns>
+        /// 
+        [Authorize(Roles = "1")]
         [HttpGet]
         public IActionResult Listar()
         {
@@ -54,6 +57,8 @@ namespace Senai_HROADS_WebApi.Controllers
         /// </summary>
         /// <param name="IdTipoUsuario">ID do tipoUsuario que será buscado</param>
         /// <returns>Um tipoUsuario encontrado com o status code 200 - Ok</returns>
+        /// 
+        [Authorize(Roles = "1")]
         [HttpGet("{IdTipoUsuario}")]
         public IActionResult BuscarPorId(int IdTipoUsuario)
         {       
@@ -97,6 +102,8 @@ namespace Senai_HROADS_WebApi.Controllers
         /// <param name="IdTipoUsuario">ID do tipoUsuario que será atualizado</param>
         /// <param name="tipoUsuarioAtualizado">Objeto TipoUsuarioAtualizado com as novas informações</param>
         /// <returns>Um status code 204 - No Content</returns>
+        /// 
+        [Authorize(Roles = "1")]
         [HttpPut("{IdTipoUsuario}")]
         public IActionResult Atualizar(int IdTipoUsuario, TipoUsuario tipoUsuarioAtualizado)
         {
@@ -128,6 +135,8 @@ namespace Senai_HROADS_WebApi.Controllers
         /// </summary>
         /// <param name="IdTipoUsuario">ID do tipoUsuario que será deletado</param>
         /// <returns>Um status code 204 - No Content</returns>
+        /// 
+        [Authorize(Roles = "1")]
         [HttpDelete("{IdTipoUsuario}")]
         public IActionResult Deletar(int IdTipoUsuario)
         {

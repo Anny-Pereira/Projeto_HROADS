@@ -76,6 +76,8 @@ namespace Senai_HROADS_WebApi.Controllers
         /// </summary>
         /// <param name="id">id da habilidade que será deletada</param>
         /// <returns>retorna um status code</returns>
+        /// 
+        [Authorize(Roles = "1")]
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {        
@@ -104,6 +106,8 @@ namespace Senai_HROADS_WebApi.Controllers
         /// <param name="id">id da habilidade que será atualizada</param>
         /// <param name="habilidadeAtualizada">objeto habilidade atualizado</param>
         /// <returns></returns>
+        /// 
+        [Authorize(Roles = "1")]
         [HttpPut("{id}")]
         public IActionResult Atualizar(int id, Habilidade habilidadeAtualizada)
         {
@@ -139,6 +143,8 @@ namespace Senai_HROADS_WebApi.Controllers
         /// </summary>
         /// <param name="id">id da habilidade que será buscada</param>
         /// <returns></returns>
+        /// 
+        [Authorize(Roles = "1")]
         [HttpGet("{id}")]
         public IActionResult BuscarId(int id)
         {

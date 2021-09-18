@@ -72,6 +72,7 @@ namespace Senai_HROADS_WebApi.Controllers
         /// </summary>
         /// <param name="id">id do personagem que será deletado</param>
         /// <returns></returns>
+        [Authorize(Roles = "2")]
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {
@@ -98,6 +99,7 @@ namespace Senai_HROADS_WebApi.Controllers
         /// <param name="id">id do personagem que será atualizado</param>
         /// <param name="personagemAtualizado">objeto Personagem com as informações novas</param>
         /// <returns></returns>
+        [Authorize(Roles = "2")]
         [HttpPut("{id}")]
         public IActionResult Atualizar(int id, Personagem personagemAtualizado)
         {
@@ -126,6 +128,12 @@ namespace Senai_HROADS_WebApi.Controllers
         }
 
         //BuscarId
+        /// <summary>
+        /// Busca um personagem pelo seu id
+        /// </summary>
+        /// <param name="id">id do personagem que será buscado</param>
+        /// <returns></returns>
+        [Authorize(Roles = "2")]
         [HttpGet("{id}")]
         public IActionResult BuscarId(int id)
         {

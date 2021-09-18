@@ -35,6 +35,8 @@ namespace Senai_HROADS_WebApi.Controllers
         /// Lista todos os usuários
         /// </summary>
         /// <returns>Uma lista de usuários com o status code 200 - Ok</returns>
+        /// 
+        [Authorize(Roles = "1")]
         [HttpGet]
         public IActionResult Listar()
         {
@@ -54,6 +56,8 @@ namespace Senai_HROADS_WebApi.Controllers
         /// </summary>
         /// <param name="IdUsuario">ID do usuario que será buscado</param>
         /// <returns>Um usuário encontrado com o status code 200 - Ok</returns>
+        /// 
+        [Authorize(Roles = "1")]
         [HttpGet("{IdUsuario}")]
         public IActionResult BuscarPorId(int IdUsuario)
         {
@@ -97,6 +101,8 @@ namespace Senai_HROADS_WebApi.Controllers
         /// <param name="IdUsuario">ID do Usuario que será atualizado</param>
         /// <param name="usuarioAtualizado">Objeto usuarioAtualizado com as novas informações</param>
         /// <returns>Um status code 204 - No Content</returns>
+        /// 
+        [Authorize(Roles = "1")]
         [HttpPut("{IdUsuario}")]
         public IActionResult Atualizar(int IdUsuario, Usuario usuarioAtualizado)
         {
@@ -128,6 +134,8 @@ namespace Senai_HROADS_WebApi.Controllers
         /// </summary>
         /// <param name="IdUsuario">ID do usuário que será deletado</param>
         /// <returns>Um status code 204 - No Content</returns>
+        /// 
+        [Authorize(Roles = "1")]
         [HttpDelete("{IdUsuario}")]
         public IActionResult Deletar(int IdUsuario)
         {

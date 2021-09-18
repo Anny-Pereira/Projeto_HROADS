@@ -34,6 +34,7 @@ namespace Senai_HROADS_WebApi.Controllers
         /// </summary>
         /// <returns>Uma lista de Classes com o status code 200 - Ok</returns>
         /// PÚBLICA
+        [Authorize(Roles = "1, 2")]
         [HttpGet]
         public IActionResult Listar()
         {      
@@ -54,6 +55,7 @@ namespace Senai_HROADS_WebApi.Controllers
         /// </summary>
         /// <param name="IdClasse">ID da Classe que será buscado</param>
         /// <returns>Uma classe encontrado com o status code 200 - Ok</returns>
+        [Authorize(Roles = "1")]
         [HttpGet("{IdClasse}")]
         public IActionResult BuscarId(int IdClasse)
         {
@@ -99,6 +101,7 @@ namespace Senai_HROADS_WebApi.Controllers
         /// <param name="IdClasse">ID da classe que será atualizado</param>
         /// <param name="classeAtualizado">Objeto classeAtualizado com as novas informações</param>
         /// <returns>Um status code 204 - No Content</returns>
+        [Authorize(Roles = "1")]
         [HttpPut("{IdClasse}")]
         public IActionResult Atualizar(int IdClasse, Classe classeAtualizado)
         {
@@ -136,6 +139,7 @@ namespace Senai_HROADS_WebApi.Controllers
         /// </summary>
         /// <param name="IdClasse">ID da Classe que será deletado</param>
         /// <returns>Um status code 204 - No Content</returns>
+        [Authorize(Roles = "1")]
         [HttpDelete("{IdClasse}")]
         public IActionResult Deletar(int IdClasse)
         {
