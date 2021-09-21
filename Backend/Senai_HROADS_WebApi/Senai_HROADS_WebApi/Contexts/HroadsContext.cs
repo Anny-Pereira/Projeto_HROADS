@@ -34,10 +34,10 @@ namespace Senai_HROADS_WebApi.Contexts
 
 
                 // Conexão da Anny
-                optionsBuilder.UseSqlServer("Data Source= DESKTOP-TUQ4VJR\\SQLEXPRESS; initial catalog=SENAI_HROADS_MANHA; user Id=sa; pwd=senai@132;");
+                //optionsBuilder.UseSqlServer("Data Source= DESKTOP-TUQ4VJR\\SQLEXPRESS; initial catalog=SENAI_HROADS_MANHA; user Id=sa; pwd=senai@132;");
 
                 //Conexão do Rezende
-                //optionsBuilder.UseSqlServer("Data Source=DESKTOP-5BM5L8P\\SQLEXPRESS; initial catalog=SENAI_HROADS_MANHA; user Id=sa; pwd=Senai@132;");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-5BM5L8P\\SQLEXPRESS; initial catalog=SENAI_HROADS_MANHA; user Id=sa; pwd=Senai@132;");
             }
         }
 
