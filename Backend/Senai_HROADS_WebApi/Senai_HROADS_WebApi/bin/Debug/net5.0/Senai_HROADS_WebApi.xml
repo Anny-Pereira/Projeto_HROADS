@@ -19,6 +19,7 @@
             Lista todos as Classes
             </summary>
             <returns>Uma lista de Classes com o status code 200 - Ok</returns>
+            PÚBLICA
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.ClassesController.BuscarId(System.Int32)">
             <summary>
@@ -64,6 +65,7 @@
             Lista todos os ClasseHabilidadeRepository
             </summary>
             <returns>Uma lista de ClasseHabilidade com o status code 200 - Ok</returns>
+            
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.ClassesHabilidadeController.BuscarPorId(System.Int32)">
             <summary>
@@ -71,6 +73,7 @@
             </summary>
             <param name="Id">ID do classeHabilidade que será buscado</param>
             <returns>Um ClasseHabilidade encontrado com o status code 200 - Ok</returns>
+            
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.ClassesHabilidadeController.Cadastrar(Senai_HROADS_WebApi.Domains.ClasseHabilidade)">
             <summary>
@@ -86,6 +89,7 @@
             <param name="Id">ID do Classe Habilidade que será atualizado</param>
             <param name="classeHabilidadeAtualizado">Objeto classeHabilidadeAtualizado com as novas informações</param>
             <returns>Um status code 204 - No Content</returns>
+            
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.ClassesHabilidadeController.Deletar(System.Int32)">
             <summary>
@@ -93,12 +97,14 @@
             </summary>
             <param name="Id">ID do Classe Habilidadee que será deletado</param>
             <returns>Um status code 204 - No Content</returns>
+            
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.HabilidadesController.Listar">
             <summary>
             Lista todas as habilidades
             </summary>
             <returns>uma lista de habilidades e um status code</returns>
+            PÚBLICA
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.HabilidadesController.Cadastrar(Senai_HROADS_WebApi.Domains.Habilidade)">
             <summary>
@@ -113,6 +119,7 @@
             </summary>
             <param name="id">id da habilidade que será deletada</param>
             <returns>retorna um status code</returns>
+            
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.HabilidadesController.Atualizar(System.Int32,Senai_HROADS_WebApi.Domains.Habilidade)">
             <summary>
@@ -121,6 +128,7 @@
             <param name="id">id da habilidade que será atualizada</param>
             <param name="habilidadeAtualizada">objeto habilidade atualizado</param>
             <returns></returns>
+            
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.HabilidadesController.BuscarId(System.Int32)">
             <summary>
@@ -128,6 +136,7 @@
             </summary>
             <param name="id">id da habilidade que será buscada</param>
             <returns></returns>
+            
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.LoginController.Login(Senai_HROADS_WebApi.Domains.Usuario)">
             <summary>
@@ -164,6 +173,13 @@
             <param name="personagemAtualizado">objeto Personagem com as informações novas</param>
             <returns></returns>
         </member>
+        <member name="M:Senai_HROADS_WebApi.Controllers.PersonagensController.BuscarId(System.Int32)">
+            <summary>
+            Busca um personagem pelo seu id
+            </summary>
+            <param name="id">id do personagem que será buscado</param>
+            <returns></returns>
+        </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.TiposHabilidadesController.#ctor">
             <summary>
             Instancia o objeto _classeHabilidadeRepositor para que haja referência às implementações feitas no repositório ClasseHabilidadeRepository
@@ -174,6 +190,7 @@
             Lista todos os tiposHabilidade
             </summary>
             <returns>Uma lista de TiposHabilidade com o status code 200 - Ok</returns>
+            PÚBLICA
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.TiposHabilidadesController.Cadastrar(Senai_HROADS_WebApi.Domains.TiposHabilidade)">
             <summary>
@@ -188,6 +205,7 @@
             </summary>
             <param name="Id">ID do tipo Habilidadee que será deletado</param>
             <returns>Um status code 204 - No Content</returns>
+            
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.TiposHabilidadesController.BuscarPorId(System.Int32)">
             <summary>
@@ -195,6 +213,7 @@
             </summary>
             <param name="Id">ID do TipoHabilidade que será buscado</param>
             <returns>Um TipoHabilidade encontrado com o status code 200 - Ok</returns>
+            
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.TiposHabilidadesController.Atualizar(System.Int32,Senai_HROADS_WebApi.Domains.TiposHabilidade)">
             <summary>
@@ -203,6 +222,7 @@
             <param name="Id">ID do TipoHabilidade que será atualizado</param>
             <param name="tipoHabilidadeAtualizado">Objeto TipoHabilidadeAtualizado com as novas informações</param>
             <returns>Um status code 204 - No Content</returns>
+            
         </member>
         <member name="P:Senai_HROADS_WebApi.Controllers.TiposUsuariosController._tipoUsuarioRepository">
             <summary>
@@ -219,6 +239,7 @@
             Lista todos os tiposUsuarios
             </summary>
             <returns>Uma lista de tiposUsuarios com o status code 200 - Ok</returns>
+            
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.TiposUsuariosController.BuscarPorId(System.Int32)">
             <summary>
@@ -226,6 +247,7 @@
             </summary>
             <param name="IdTipoUsuario">ID do tipoUsuario que será buscado</param>
             <returns>Um tipoUsuario encontrado com o status code 200 - Ok</returns>
+            
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.TiposUsuariosController.Cadastrar(Senai_HROADS_WebApi.Domains.TipoUsuario)">
             <summary>
@@ -241,6 +263,7 @@
             <param name="IdTipoUsuario">ID do tipoUsuario que será atualizado</param>
             <param name="tipoUsuarioAtualizado">Objeto TipoUsuarioAtualizado com as novas informações</param>
             <returns>Um status code 204 - No Content</returns>
+            
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.TiposUsuariosController.Deletar(System.Int32)">
             <summary>
@@ -248,6 +271,7 @@
             </summary>
             <param name="IdTipoUsuario">ID do tipoUsuario que será deletado</param>
             <returns>Um status code 204 - No Content</returns>
+            
         </member>
         <member name="P:Senai_HROADS_WebApi.Controllers.UsuariosController._usuarioRepository">
             <summary>
@@ -264,6 +288,7 @@
             Lista todos os usuários
             </summary>
             <returns>Uma lista de usuários com o status code 200 - Ok</returns>
+            
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.UsuariosController.BuscarPorId(System.Int32)">
             <summary>
@@ -271,6 +296,7 @@
             </summary>
             <param name="IdUsuario">ID do usuario que será buscado</param>
             <returns>Um usuário encontrado com o status code 200 - Ok</returns>
+            
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.UsuariosController.Cadastrar(Senai_HROADS_WebApi.Domains.Usuario)">
             <summary>
@@ -286,6 +312,7 @@
             <param name="IdUsuario">ID do Usuario que será atualizado</param>
             <param name="usuarioAtualizado">Objeto usuarioAtualizado com as novas informações</param>
             <returns>Um status code 204 - No Content</returns>
+            
         </member>
         <member name="M:Senai_HROADS_WebApi.Controllers.UsuariosController.Deletar(System.Int32)">
             <summary>
@@ -293,6 +320,7 @@
             </summary>
             <param name="IdUsuario">ID do usuário que será deletado</param>
             <returns>Um status code 204 - No Content</returns>
+            
         </member>
         <member name="T:Senai_HROADS_WebApi.Interfaces.IClasseHabilidadeRepository">
             <summary>
